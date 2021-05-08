@@ -1,0 +1,86 @@
+######################################################################################################
+
+				Linux
+
+######################################################################################################
+
+########### Training ##########
+
+gcloud ai-platform jobs submit training segmentation_maskrcnn_test_0 \
+    --runtime-version 2.1 \
+    --python-version 3.7 \
+    --job-dir=gs://image-segmentation-bucket/training_process \
+    --package-path ./object_detection \
+    --module-name object_detection.model_main_tf2 \
+    --region us-central1 \
+    --scale-tier CUSTOM \
+    --master-machine-type n1-highcpu-32 \
+    --master-accelerator count=8,type=nvidia-tesla-k80 \
+    -- \
+    --model_dir=gs://image-segmentation-bucket/training_process \
+    --pipeline_config_path=gs://image-segmentation-bucket/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8-cloud.config
+    
+    
+######### Evaluation ##########
+
+gcloud ai-platform jobs submit training segmentation_maskrcnn_eval_test_0 \
+    --runtime-version 2.1 \
+    --python-version 3.7 \
+    --job-dir=gs://image-segmentation-bucket/training_process \
+    --package-path ./object_detection \
+    --module-name object_detection.model_main_tf2 \
+    --region us-central1 \
+    --scale-tier BASIC_GPU \
+    -- \
+    --model_dir=gs://image-segmentation-bucket/training_process \
+    --pipeline_config_path=gs://image-segmentation-bucket/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8-cloud.config \
+    --checkpoint_dir=gs://image-segmentation-bucket/training_process
+
+######################################################################################################
+
+				Windows
+
+######################################################################################################
+
+########### Training ##########
+
+gcloud ai-platform jobs submit training segmentation_maskrcnn_test_0 ^
+    --runtime-version 2.1 ^
+    --python-version 3.7 ^
+    --job-dir=gs://image-segmentation-bucket/training_process ^
+    --package-path ./object_detection ^
+    --module-name object_detection.model_main_tf2 ^
+    --region us-central1 ^
+    --scale-tier CUSTOM ^
+    --master-machine-type n1-highcpu-32 ^
+    --master-accelerator count=8,type=nvidia-tesla-k80 ^
+    -- ^
+    --model_dir=gs://image-segmentation-bucket/training_process ^
+    --pipeline_config_path=gs://image-segmentation-bucket/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8-cloud.config
+    
+    
+######### Evaluation ##########
+
+gcloud ai-platform jobs submit training segmentation_maskrcnn_eval_test_0 ^
+    --runtime-version 2.1 ^
+    --python-version 3.7 ^
+    --job-dir=gs://image-segmentation-bucket/training_process ^
+    --package-path ./object_detection ^
+    --module-name object_detection.model_main_tf2 ^
+    --region us-central1 ^
+    --scale-tier BASIC_GPU ^
+    -- ^
+    --model_dir=gs://image-segmentation-bucket/training_process ^
+    --pipeline_config_path=gs://image-segmentation-bucket/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8-cloud.config ^
+    --checkpoint_dir=gs://image-segmentation-bucket/training_process
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

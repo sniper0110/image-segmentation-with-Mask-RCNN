@@ -1,0 +1,49 @@
+************************* Linux **********************
+
+
+######### Training ################
+
+# From the tensorflow/models/research/ directory
+
+
+python object_detection/model_main_tf2.py \
+    --pipeline_config_path=/path/to/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.config \
+    --model_dir=/path/to/training_process/folder \
+    --alsologtostderr
+    
+    
+########## Evaluation ################
+
+# From the tensorflow/models/research/ directory
+
+
+python object_detection/model_main_tf2.py \
+    --pipeline_config_path=/path/to/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.config \
+    --model_dir=path/to/training_process/folder \
+    --checkpoint_dir=path/to/ckpts \
+    --alsologtostderr
+
+
+*********************** Windows *******************
+
+
+######### Training ################
+
+# From the tensorflow/models/research/ directory
+
+python object_detection/model_main_tf2.py ^
+    --pipeline_config_path=path/to/config/file ^
+    --model_dir=path/to/training_process/folder ^
+    --alsologtostderr
+    
+    
+########## Evaluation ################
+
+# From the tensorflow/models/research/ directory
+
+
+python object_detection/model_main_tf2.py ^
+    --pipeline_config_path=/path/to/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.config ^
+    --model_dir=path/to/training_process/folder ^
+    --checkpoint_dir=path/to/ckpts ^
+    --alsologtostderr

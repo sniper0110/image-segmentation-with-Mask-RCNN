@@ -1,0 +1,49 @@
+####################### Export frozen model ##########################
+
+
+######################################################################################################
+
+				Linux command
+
+######################################################################################################
+
+# inside models/research/object_detection
+
+# Path to config file
+PIPELINE_CONFIG_PATH = ''
+
+# Path to where your checkpoints were saved
+MODEL_DIR = ''
+
+# Path to where the generated frozen model will be saved
+OUTPUT_DIR = ''
+
+python exporter_main_v2.py \
+    --input_type="image_tensor" \
+    --pipeline_config_path=/path/to/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8-cloud.config \
+    --trained_checkpoint_dir=/path/to/checkpoints/folder \
+    --output_directory=/path/to/where/the/exported/model/will/be/saved
+    
+    
+######################################################################################################
+
+				Windows command
+
+######################################################################################################
+
+# inside models/research/object_detection
+
+# Path to config file
+PIPELINE_CONFIG_PATH = ''
+
+# Path to where your checkpoints were saved
+MODEL_DIR = ''
+
+# Path to where the generated frozen model will be saved
+OUTPUT_DIR = ''
+
+python exporter_main_v2.py ^
+    --input_type="image_tensor" ^
+    --pipeline_config_path=/path/to/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8-cloud.config ^
+    --trained_checkpoint_dir=/path/to/checkpoints/folder ^
+    --output_directory=/path/to/where/the/exported/model/will/be/saved

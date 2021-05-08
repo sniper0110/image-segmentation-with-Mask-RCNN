@@ -1,0 +1,24 @@
+item {
+  id: 1
+  name: 'headlamp'
+}
+
+item {
+  id: 2
+  name: 'rear_bumper'
+}
+
+item {
+  id: 3
+  name: 'door'
+}
+
+item {
+  id: 4
+  name: 'hood'
+}
+
+item {
+  id: 5
+  name: 'front_bumper'
+}
